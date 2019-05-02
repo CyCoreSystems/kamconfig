@@ -1,0 +1,38 @@
+project_name: Kam Config
+builds:
+   - binary: kamconfig
+     env:
+        - CGO_ENABLED=0
+     goos:
+        - linux
+        - darwin
+        - windows
+     goarch:
+        - amd64
+
+archive:
+   format: tar.gz
+   name_template: "{{ .Binary }}.{{ .Os }}.{{ .Arch }}"
+   files:
+      - 'core/*'
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+       - '^docs:'
+       - '^doc:'
+       - '^test:'
+
+dockers:
+   - image: cycoresystems/kamconfig
+     tag_templates:
+        - "{{ .Tag }}"
+        - "v{{ .Major }}"
+        - "v{{ .Major }}.{{ .Minor }}"
+        - latest
+     extra_files:
+        - 'core/'
