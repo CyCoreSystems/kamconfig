@@ -1,4 +1,5 @@
 # kamconfig - Kamailio Configuration Manager
+[![Build Status](https://travis-ci.org/CyCoreSystems/kamconfig.png)](https://travis-ci.org/CyCoreSystems/kamconfig)
 
 Kam Config generates configuration templates for Kamailio.  In general, it does so
 by producing a `kamconfig-vars.k` file which contains a set of `#!substdef` mappings of
